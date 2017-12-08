@@ -11,6 +11,8 @@ android:
     - 'android-sdk-license-.+'
     - 'google-gdk-license-.+'
 
+before_install: 
+  - chmod +x .github/scripts/deploy/telegram.sh
 script:
   - bash ./gradlew assembleDebug check
   - bash ./gradlew app:assembleRelease check
@@ -18,5 +20,6 @@ script:
 deploy:
   - provider: script
     skip_cleanup: true
+    script: .github/scripts/deploy/telegram.sh
     on:
       branch: master
