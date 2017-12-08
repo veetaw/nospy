@@ -4,6 +4,8 @@ android:
   components:
     - tools
     - platform-tools
+    - build-tools-26.0.2
+    - android-26
   licenses:
     - 'android-sdk-preview-license-.+'
     - 'android-sdk-license-.+'
@@ -16,3 +18,5 @@ script:
 deploy:
   - provider: script
     skip_cleanup: true
+    on:
+      branch: master
