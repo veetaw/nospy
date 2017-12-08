@@ -1,9 +1,10 @@
 <resources>
     <string name="app_name">No Spy</string>
     <string name="services">Services</string>
-    <string name="switch_audio">Enable audio listener</string>
+    <string name="switch_audio" translatable="false">Enable audio listener</string>
     <string name="switch_camera">Enable camera listener</string>
     <string name="service_checkbox">Enable/Disable service</string>
     <string name="general">General</string>
     <string name="audio_card_used">Audio card is used by </string>
+    <string name="service_running">NoSpy service is running </string>
 </resources>

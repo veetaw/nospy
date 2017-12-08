@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">No Spy</string>
+    <string name="services">Servizi</string>
+    <string name="switch_audio">Abilita servizio microfono</string>
+    <string name="switch_camera">Abilita servizio camera</string>
+    <string name="service_checkbox">Abilita/Disabilita servizio</string>
+    <string name="general">Generale</string>
+    <string name="audio_card_used">"Microfono usato da "</string>
+    <string name="service_running">Servizio NoSpy in esecuzione</string>
+</resources>
