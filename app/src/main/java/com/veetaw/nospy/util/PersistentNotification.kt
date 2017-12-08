@@ -9,6 +9,7 @@ import android.content.Intent
 import android.support.v4.app.NotificationCompat
 import com.veetaw.nospy.R
 import com.veetaw.nospy.ui.MainActivity
+import java.util.*
 
 
 class PersistentNotification {
@@ -23,7 +24,7 @@ class PersistentNotification {
                 .setSmallIcon(R.mipmap.ic_launcher_round) //todo
                 .build()
         val mNotifyMgr = context.getSystemService(NOTIFICATION_SERVICE) as NotificationManager
-        mNotifyMgr.notify(1, notification)
+        mNotifyMgr.notify((Date().time / 1000L % Integer.MAX_VALUE) as Int, notification)
         return notification
     }
 }
