@@ -16,7 +16,7 @@ class PersistentNotificationHelper {
     fun build(context: Context): Notification {
         val mNotifyIntent = Intent(context, MainActivity::class.java)
         val pendingIntent = PendingIntent.getActivity(context, 0, mNotifyIntent, 0)
-        val notification = NotificationCompat.Builder(context) //wtf deprecated
+        val notification = NotificationCompat.Builder(context, "persistent_notification")
                 .setContentTitle(context.getString(R.string.service_running))
                 .setPriority(1)
                 .setContentIntent(pendingIntent)

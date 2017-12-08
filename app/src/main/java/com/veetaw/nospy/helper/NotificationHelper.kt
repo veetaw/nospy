@@ -9,7 +9,7 @@ import java.util.*
 
 class NotificationHelper {
     fun build(context: Context, title: String): Notification {
-        val notification = NotificationCompat.Builder(context)
+        val notification = NotificationCompat.Builder(context, "nospy_notification")
                 .setContentTitle(title)
                 .setPriority(1)
                 .setSmallIcon(R.mipmap.ic_launcher_round) //todo
