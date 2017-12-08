@@ -1,18 +1,53 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.veetaw.nospy.MainActivity">
+    android:padding="16px"
+    tools:context="com.veetaw.nospy.ui.MainActivity"
+    tools:ignore="PxUsage">
 
     <TextView
-        android:layout_width="wrap_content"
+        android:id="@+id/s_tv"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:text="@string/services" />
 
-</android.support.constraint.ConstraintLayout>
+    <Switch
+        android:id="@+id/audio_switch"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/s_tv"
+        android:layout_marginBottom="16px"
+        android:layout_marginTop="16px"
+        android:text="@string/switch_audio"
+        android:textSize="18sp" />
+
+    <Switch
+        android:id="@+id/camera_switch"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/audio_switch"
+        android:layout_marginBottom="16px"
+        android:layout_marginTop="16px"
+        android:text="@string/switch_camera"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/g_tv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/camera_switch"
+        android:text="@string/general" />
+
+    <Switch
+        android:id="@+id/service_checkbox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/g_tv"
+        android:layout_marginBottom="16px"
+        android:layout_marginTop="16px"
+        android:text="@string/service_checkbox"
+        android:textSize="18sp" />
+
+</RelativeLayout>

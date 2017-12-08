@@ -4,6 +4,12 @@ import java.io.File
 
 class Audio {
 
+    private val card: CharArray
+
+    init {
+        card = this.getCard()
+    }
+
     private fun getCard(): CharArray {
         val card = charArrayOf('0', '0')
 
@@ -21,7 +27,6 @@ class Audio {
     }
 
     fun isUsed(): Boolean {
-        val card = this.getCard()
         val path = "/proc/asound/card" + card[0] + "/pcm" + card[1] + "c/info"
         val file = File(path).inputStream().bufferedReader().use { it.readText() }
 

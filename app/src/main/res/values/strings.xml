@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">No Spy</string>
+    <string name="services">Services</string>
+    <string name="switch_audio">Enable audio listener</string>
+    <string name="switch_camera">Enable camera listener</string>
+    <string name="service_checkbox">Enable/Disable service</string>
+    <string name="general">General</string>
 </resources>
