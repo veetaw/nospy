@@ -5,4 +5,5 @@
     <string name="switch_camera">Enable camera listener</string>
     <string name="service_checkbox">Enable/Disable service</string>
     <string name="general">General</string>
+    <string name="audio_card_used">Audio card is used by </string>
 </resources>

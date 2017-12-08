@@ -5,12 +5,12 @@ import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.widget.Switch
 import com.veetaw.nospy.R
+import com.veetaw.nospy.helper.PreferencesHelper
 import com.veetaw.nospy.service.Service
-import com.veetaw.nospy.util.Preferences
 
 class MainActivity : AppCompatActivity() {
 
-    private var prefs: Preferences? = null
+    private var prefs: PreferencesHelper? = null
     private var audioSwitch: Switch? = null
     //var cameraSwitch : Switch? = null
 
@@ -18,7 +18,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        prefs = Preferences(this)
+        prefs = PreferencesHelper(this)
 
         audioSwitch = findViewById(R.id.audio_switch)
         //cameraSwitch = findViewById(R.id.camera_switch)

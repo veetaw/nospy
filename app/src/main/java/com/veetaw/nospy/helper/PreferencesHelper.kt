@@ -1,9 +1,9 @@
-package com.veetaw.nospy.util
+package com.veetaw.nospy.helper
 
 import android.content.Context
 
 
-class Preferences(context: Context) {
+class PreferencesHelper(context: Context) {
     private val sharedPrefs = context.getSharedPreferences(
             "com.veetaw.nospy.nospy_shared_prefs", Context.MODE_PRIVATE)
 

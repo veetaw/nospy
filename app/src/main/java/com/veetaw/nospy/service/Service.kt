@@ -3,7 +3,7 @@ package com.veetaw.nospy.service
 import android.app.Service
 import android.content.Intent
 import android.os.IBinder
-import com.veetaw.nospy.util.PersistentNotification
+import com.veetaw.nospy.helper.PersistentNotificationHelper
 import com.veetaw.nospy.util.ServiceThread
 
 class Service : Service() {
@@ -11,7 +11,7 @@ class Service : Service() {
 
     override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
         super.onStartCommand(intent, flags, startId)
-        startForeground(1, PersistentNotification().build(this))
+        startForeground(1, PersistentNotificationHelper().build(this))
 
         t = ServiceThread(this).run()
 

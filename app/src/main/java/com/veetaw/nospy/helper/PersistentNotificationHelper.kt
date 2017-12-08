@@ -1,4 +1,4 @@
-package com.veetaw.nospy.util
+package com.veetaw.nospy.helper
 
 import android.app.Notification
 import android.app.NotificationManager
@@ -12,7 +12,7 @@ import com.veetaw.nospy.ui.MainActivity
 import java.util.*
 
 
-class PersistentNotification {
+class PersistentNotificationHelper {
 
     fun build(context: Context): Notification {
         val mNotifyIntent = Intent(context, MainActivity::class.java)
