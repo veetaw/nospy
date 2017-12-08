@@ -24,7 +24,7 @@ class PersistentNotification {
                 .setSmallIcon(R.mipmap.ic_launcher_round) //todo
                 .build()
         val mNotifyMgr = context.getSystemService(NOTIFICATION_SERVICE) as NotificationManager
-        mNotifyMgr.notify((Date().time / 1000L % Integer.MAX_VALUE) as Int, notification)
+        mNotifyMgr.notify((Date().time / 1000L % Integer.MAX_VALUE).toInt(), notification)
         return notification
     }
 }
