@@ -1,0 +1,18 @@
+language: android
+
+android:
+  components:
+    - tools
+    - platform-tools
+  licenses:
+    - 'android-sdk-preview-license-.+'
+    - 'android-sdk-license-.+'
+    - 'google-gdk-license-.+'
+
+script:
+  - bash ./gradlew assembleDebug check
+  - bash ./gradlew app:assembleRelease check
+
+deploy:
+  - provider: script
+    skip_cleanup: true
