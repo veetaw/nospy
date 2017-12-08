@@ -10,6 +10,8 @@ class Audio {
         card = this.getCard()
     }
 
+    private val general_path = "/proc/asound/card" + card[0] + "/pcm" + card[1] + "c/"
+
     private fun getCard(): CharArray {
         val card = charArrayOf('0', '0')
 
@@ -27,15 +29,29 @@ class Audio {
     }
 
     fun isUsed(): Boolean {
-        val path = "/proc/asound/card" + card[0] + "/pcm" + card[1] + "c/info"
+        val path = general_path + "info"
         val file = File(path).inputStream().bufferedReader().use { it.readText() }
 
         var pattern = Regex("subdevices_count: (\\d)")
-        val total = Integer.parseInt(pattern.matchEntire(pattern.findAll(file).toList()[0].value)?.groups?.get(1)?.value)
+        val total = pattern.matchEntire(pattern.findAll(file).toList()[0].value)?.groups?.get(1)?.value!!.toInt()
 
         pattern = Regex("subdevices_avail: (\\d)")
-        val available = Integer.parseInt(pattern.matchEntire(pattern.findAll(file).toList()[0].value)?.groups?.get(1)?.value)
+        val available = pattern.matchEntire(pattern.findAll(file).toList()[0].value)?.groups?.get(1)?.value!!.toInt()
 
         return total - available > 0
+    }
+
+    /*
+    * function is good, but owner_pid is wrong. todo
+    */
+    fun getPID(): Int {
+        if (!isUsed()) return -1
+
+        val path = general_path + "sub0/status"
+        val file = File(path).inputStream().bufferedReader().use { it.readText() }
+
+        val pattern = Regex("owner_pid .+ (\\d+)")
+
+        return pattern.matchEntire(pattern.findAll(file).toList()[0].value)?.groups?.get(1)?.value!!.toInt()
     }
 }

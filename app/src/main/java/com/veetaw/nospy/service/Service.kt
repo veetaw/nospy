@@ -4,7 +4,6 @@ import android.app.Service
 import android.content.Intent
 import android.os.IBinder
 import com.veetaw.nospy.util.PersistentNotification
-import com.veetaw.nospy.util.Preferences
 import com.veetaw.nospy.util.ServiceThread
 
 class Service : Service() {
@@ -14,7 +13,7 @@ class Service : Service() {
         super.onStartCommand(intent, flags, startId)
         startForeground(1, PersistentNotification().build(this))
 
-        t = ServiceThread(Preferences(this)).run()
+        t = ServiceThread(this).run()
 
         return START_STICKY
     }

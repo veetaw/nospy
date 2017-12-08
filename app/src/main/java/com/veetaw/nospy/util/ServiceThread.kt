@@ -1,10 +1,12 @@
 package com.veetaw.nospy.util
 
+import android.content.Context
 import android.os.SystemClock
 import android.util.Log
 
-class ServiceThread constructor(private val prefs: Preferences) {
+class ServiceThread constructor(private val context: Context) {
     private val audioUtil = Audio()
+    private val prefs = Preferences(context)
 
     fun run(): Thread {
         val t = Thread(Runnable {
@@ -13,7 +15,8 @@ class ServiceThread constructor(private val prefs: Preferences) {
                 val isAudioListenerEnabled = prefs.getBool("audioListenerEnabled", false)
                 if (isAudioListenerEnabled and audioUtil.isUsed()) {
                     //todo send notification
-                    Log.d("ServiceThread", "audio card used")
+                    Log.d("ServiceThread", "audio card used by " +
+                            PidUtil().packageNameByPID(context, audioUtil.getPID()))
                 }
 
                 //check if camera is used
