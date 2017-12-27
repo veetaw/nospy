@@ -4,6 +4,8 @@ import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.widget.Switch
+import android.widget.Toast
+import com.veetaw.nospy.Constants
 import com.veetaw.nospy.R
 import com.veetaw.nospy.helper.PreferencesHelper
 import com.veetaw.nospy.service.Service
@@ -11,8 +13,10 @@ import com.veetaw.nospy.service.Service
 class MainActivity : AppCompatActivity() {
 
     private var prefs: PreferencesHelper? = null
+    private val c = Constants()
+
     private var audioSwitch: Switch? = null
-    //var cameraSwitch : Switch? = null
+    private var cameraSwitch: Switch? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -21,7 +25,7 @@ class MainActivity : AppCompatActivity() {
         prefs = PreferencesHelper(this)
 
         audioSwitch = findViewById(R.id.audio_switch)
-        //cameraSwitch = findViewById(R.id.camera_switch)
+        cameraSwitch = findViewById(R.id.camera_switch)
 
         initPrefs()
         setOnClickListeners()
@@ -32,22 +36,22 @@ class MainActivity : AppCompatActivity() {
 
     private fun initPrefs() {
         if (!prefs!!.prefsExist()) {
-            prefs!!.setBool("audioListenerEnabled", false)
-            //prefs.setBool("cameraListenerEnabled", false)
+            prefs!!.setBool(c.audioPrefName, false)
+            prefs!!.setBool(c.cameraPrefName, false)
         }
-        audioSwitch?.isChecked = prefs!!.getBool("audioListenerEnabled", false)
-        //cameraSwitch?.isChecked = prefs.getBool("cameraListenerEnabled", false)
+        audioSwitch?.isChecked = prefs!!.getBool(c.audioPrefName, false)
+        cameraSwitch?.isChecked = prefs!!.getBool(c.cameraPrefName, false)
     }
 
     private fun setOnClickListeners() {
         audioSwitch?.setOnClickListener {
-            prefs!!.setBool("audioListenerEnabled", audioSwitch!!.isChecked)
+            prefs!!.setBool(c.audioPrefName, audioSwitch!!.isChecked)
+            Toast.makeText(this, getString(R.string.restart_app), Toast.LENGTH_LONG).show()
         }
-        /* todo
-        *cameraSwitch?.setOnClickListener {
-        *    prefs!!.setBool("cameraListenerEnabled", cameraSwitch!!.isChecked)
-        *}
-        */
+        cameraSwitch?.setOnClickListener {
+            prefs!!.setBool(c.cameraPrefName, cameraSwitch!!.isChecked)
+            Toast.makeText(this, getString(R.string.restart_app), Toast.LENGTH_LONG).show()
+        }
     }
 
 }

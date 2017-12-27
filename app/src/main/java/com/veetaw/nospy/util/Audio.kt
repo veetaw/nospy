@@ -42,7 +42,8 @@ class Audio {
     }
 
     /*
-    * function is good, but owner_pid is wrong. todo
+     * function is good, but owner_pid is wrong because it will give a MediaRecorder's task pid
+     * I'll keep anyway because using an ID is possible to prevent multiple notifications for the same app using mic
     */
     fun getPID(): Int {
         if (!isUsed()) return -1

@@ -1,10 +1,13 @@
 package com.veetaw.nospy.util
 
 import android.content.Context
+import android.os.Handler
+import android.os.Looper
 import android.os.SystemClock
 import com.veetaw.nospy.R
 import com.veetaw.nospy.helper.NotificationHelper
 import com.veetaw.nospy.helper.PreferencesHelper
+
 
 class ServiceThread constructor(private val context: Context) {
     private val audioUtil = Audio()
@@ -12,24 +15,22 @@ class ServiceThread constructor(private val context: Context) {
 
     fun run(): Thread {
         val t = Thread(Runnable {
-            var last_pid = 0
+            var lastPid = 0
+            if (prefs.getBool("cameraListenerEnabled", false)) {
+                // we need to run this on the main thread, so we use a Handler
+                Handler(Looper.getMainLooper()).post({
+                    Camera().registerCallback(context)
+                })
+            }
+
             while (!Thread.currentThread().isInterrupted) {
                 // check if audio card is used
-                val isAudioListenerEnabled = prefs.getBool("audioListenerEnabled", false)
-                if (isAudioListenerEnabled and audioUtil.isUsed()) {
+                if (prefs.getBool("audioListenerEnabled", false) and audioUtil.isUsed()) {
                     val pid = audioUtil.getPID()
-                    if (last_pid != pid)
-                        NotificationHelper().build(context, context.getString(R.string.audio_card_used) +
-                                PidUtil().packageNameByPID(context, pid) + " (" +
-                                pid.toString() + ")")
-                    last_pid = pid
+                    if (lastPid != pid)
+                        NotificationHelper().build(context, context.getString(R.string.audio_card_used))
+                    lastPid = pid
                 }
-
-                //check if camera is used
-                //if (isCameraListenerEnabled and cameraUtil.isUsed()) {
-                //  //todo send notification
-                //  Log.d("debug", "camera used")
-                //}
                 SystemClock.sleep(2000)
             }
         })

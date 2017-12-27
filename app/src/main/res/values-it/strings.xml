@@ -6,6 +6,9 @@
     <string name="switch_camera">Abilita servizio camera</string>
     <string name="service_checkbox">Abilita/Disabilita servizio</string>
     <string name="general">Generale</string>
-    <string name="audio_card_used">"Microfono usato da "</string>
+    <string name="audio_card_used">Il microfono è in uso!</string>
     <string name="service_running">Servizio NoSpy in esecuzione</string>
+    <string name="camera_used">La fotocamera posteriore (o esterna) è in uso!</string>
+    <string name="front_camera_used">La fotocamera frontale è in uso!</string>
+    <string name="restart_app">Riavvia l\'applicazione per applicare i cambiamenti</string>
 </resources>

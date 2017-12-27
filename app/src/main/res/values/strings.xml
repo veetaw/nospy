@@ -5,6 +5,9 @@
     <string name="switch_camera">Enable camera listener</string>
     <string name="service_checkbox">Enable/Disable service</string>
     <string name="general">General</string>
-    <string name="audio_card_used">Audio card is used by </string>
+    <string name="audio_card_used">Audio card used! </string>
     <string name="service_running">NoSpy service is running </string>
+    <string name="camera_used">Retro/external camera used!</string>
+    <string name="front_camera_used">Front camera used!</string>
+    <string name="restart_app">Please restart the app to apply changes</string>
 </resources>
